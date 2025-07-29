@@ -1,0 +1,4 @@
+RideListProject/__pycache__/*
+api/__pycache__/*
+api/migrations
+staticfiles
