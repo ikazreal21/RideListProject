@@ -52,9 +52,23 @@ python manage.py runserver
 - **Admin Panel**: http://localhost:8000/admin/ (admin/adminadmin)
 - **API Documentation**: http://localhost:8000/api/docs/
 
+## Live Deployment
+
+This API is also deployed and accessible online at:
+
+- **Live API**: https://ridelistapi.ellequin.com/
+- **API Documentation**: https://ridelistapi.ellequin.com/api/docs/
+- **Admin Panel**: https://ridelistapi.ellequin.com/admin/
+
+**Deployment Details:**
+
+- Hosted on home server infrastructure
+- Secured with HTTPS using Cloudflare tunneling
+- Same authentication credentials (admin/adminadmin)
+
 ## API Features
 
-- **Admin-only authentication** (username: admin, password: admin123)
+- **Admin-only authentication** (username: admin, password: adminadmin)
 - **Ride filtering** by status and rider email
 - **Distance-based sorting** using GPS coordinates
 - **Pagination** (20 items per page, max 100)
