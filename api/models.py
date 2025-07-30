@@ -28,7 +28,6 @@ class Ride(models.Model):
         ('in-progress', 'In Progress'),
     ]
 
-
     id_ride = models.AutoField(primary_key=True)
     status = models.CharField(max_length=20, choices=CHOICES, default='waiting')
     id_rider = models.ForeignKey(CustomUser, related_name='rides_as_rider', on_delete=models.CASCADE)
@@ -47,6 +46,12 @@ class Ride(models.Model):
         verbose_name = 'Ride'
         verbose_name_plural = 'Rides'
         unique_together = ('id_rider', 'id_driver', 'pickup_time')
+        indexes = [
+            models.Index(fields=['status']),
+            models.Index(fields=['pickup_time']),
+            models.Index(fields=['id_rider', 'status']),
+            models.Index(fields=['pickup_latitude', 'pickup_longitude']),
+        ]
 
 
 class RideEvent(models.Model):
@@ -54,7 +59,6 @@ class RideEvent(models.Model):
     id_ride = models.ForeignKey(Ride, related_name='events', on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
-    
 
     def __str__(self):
         return f"Event {self.id_ride_event} for Ride {self.id_ride.id_ride} - {self.description}"
@@ -64,4 +68,7 @@ class RideEvent(models.Model):
         verbose_name = 'Ride Event'
         verbose_name_plural = 'Ride Events'
         unique_together = ('id_ride', 'description', 'created_at')
-
+        indexes = [
+            models.Index(fields=['created_at']),
+            models.Index(fields=['id_ride', 'created_at']),
+        ]
