@@ -35,9 +35,6 @@ pip install -r requirements.txt
 # Create and apply migrations
 python manage.py makemigrations
 python manage.py migrate
-
-# Create sample data and admin user
-python manage.py create_sample_data --rides 50
 ```
 
 ### 5. Run Server
